@@ -1,0 +1,11 @@
+sa: swap the first two elements of stack A.
+sb: swap the first two elements of stack B.
+ss: do sa and sb at the same time.
+pa: take the first element from stack B and put it on top of stack A.
+pb: take the first element from stack A and put it on top of stack B.
+ra: shift all elements of stack A up by one. The first element becomes the last one.
+rb: shift all elements of stack B up by one. The first element becomes the last one.
+rr: do ra and rb at the same time.
+rra: shift all elements of stack A down by one. The last element becomes the first one.
+rrb: shift all elements of stack B down by one. The last element becomes the first one.
+rrr: do rra and rrb at the same time.

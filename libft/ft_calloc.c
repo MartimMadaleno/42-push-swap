@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmendes- <mmendes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 15:38:54 by mmendes-          #+#    #+#             */
-/*   Updated: 2023/02/23 15:38:54 by mmendes-         ###   ########.fr       */
+/*   Created: 2023/02/23 14:15:10 by mmendes-          #+#    #+#             */
+/*   Updated: 2023/02/23 14:15:10 by mmendes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-
-static void	rotate(t_list **stack)
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	t_list	*tmp;
-	t_list	*tail;
+	void	*p;
 
-	tmp = *stack;
-	*stack = (*stack)->next;
-	tail = get_stack_bottom(*stack);
-	tmp->next = NULL;
-	tail->next = tmp;
-}
-
-void	do_ra(t_list **stack_a)
-{
-	rotate(stack_a);
-	printf("ra\n");
-}
-
-void	do_rb(t_list **stack_b)
-{
-	rotate(stack_b);
-	printf("rb\n");
-}
-
-void	do_rr(t_list **stack_a, t_list **stack_b)
-{
-	rotate(stack_a);
-	rotate(stack_b);
-	printf("rr\n");
+	p = malloc(nitems * size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, nitems * size);
+	return (p);
 }

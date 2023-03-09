@@ -1,46 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   checkinput.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmendes- <mmendes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 15:38:54 by mmendes-          #+#    #+#             */
-/*   Updated: 2023/02/23 15:38:54 by mmendes-         ###   ########.fr       */
+/*   Created: 2023/02/23 14:13:07 by mmendes-          #+#    #+#             */
+/*   Updated: 2023/02/23 14:13:07 by mmendes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-
-static void	rotate(t_list **stack)
+static int checkdoubles(char **argv, int i)
 {
-	t_list	*tmp;
-	t_list	*tail;
+	int num;
 
-	tmp = *stack;
-	*stack = (*stack)->next;
-	tail = get_stack_bottom(*stack);
-	tmp->next = NULL;
-	tail->next = tmp;
+	num = ft_atoi(argv[i]);
+	while(argv[++i])
+	{
+		if(ft_atoi(argv[i]) == num)
+			return (0);
+	}
+	return (1);
 }
 
-void	do_ra(t_list **stack_a)
+int is_correct_input(char **argv)
 {
-	rotate(stack_a);
-	printf("ra\n");
-}
+	int i;
+	int h;
 
-void	do_rb(t_list **stack_b)
-{
-	rotate(stack_b);
-	printf("rb\n");
-}
-
-void	do_rr(t_list **stack_a, t_list **stack_b)
-{
-	rotate(stack_a);
-	rotate(stack_b);
-	printf("rr\n");
+	i = 0;
+	h = -1;
+	while(argv[++i])
+	{
+		while(argv[i][++h])
+		{
+			if(argv[i][h] == '-')
+				h++;
+			if(!ft_isdigit(argv[i][h]))
+				return (0);
+		}
+		h = -1;
+		if (!checkdoubles(argv, i))
+			return (0);
+	}
+	return (1);
 }
